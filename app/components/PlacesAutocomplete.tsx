@@ -1,6 +1,6 @@
 'use client'
 import { ChangeEventHandler, useEffect } from 'react'
-import { fetchWeather } from '../utils'
+import { fetchWeather, getCurrentCoordinates } from '../utils'
 import usePlacesAutocomplete, {
   getGeocode,
   getLatLng,
@@ -30,6 +30,16 @@ export const PlacesAutocomplete = () => {
   }
 
   useEffect(() => {
+    getCurrentCoordinates()
+      .then((coordinates) => {
+        fetchWeather(coordinates.latitude, coordinates.longitude)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }, [])
+
+  useEffect(() => {
     const loader = new Loader({
       apiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY as string,
       version: "weekly",
@@ -46,8 +56,6 @@ export const PlacesAutocomplete = () => {
   const handleSelect =
     ({ description }: { description: string }) =>
       () => {
-        // When the user selects a place, we can replace the keyword without request data from API
-        // by setting the second parameter to "false"
         setValue(description, false)
         clearSuggestions()
 

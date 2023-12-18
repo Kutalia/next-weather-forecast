@@ -1,5 +1,3 @@
-'use client'
-
 export const getCurrentCoordinates = () => {
   return new Promise<GeolocationCoordinates>((resolve, reject) => {
     const success = (pos: GeolocationPosition) => {

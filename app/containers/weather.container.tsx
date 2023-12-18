@@ -1,5 +1,3 @@
-'use client'
-
 import { WeatherIndicator } from '../components'
 import { useWeather } from '../hooks'
 

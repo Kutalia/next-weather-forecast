@@ -1,4 +1,3 @@
-'use client'
 import { ChangeEventHandler, useEffect } from 'react'
 import usePlacesAutocomplete, {
   getGeocode,

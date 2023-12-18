@@ -1,12 +1,13 @@
 'use client'
 import { ChangeEventHandler, useEffect } from 'react'
-import { fetchWeather, getCurrentCoordinates } from '../utils'
 import usePlacesAutocomplete, {
   getGeocode,
   getLatLng,
 } from 'use-places-autocomplete'
 import { Loader } from '@googlemaps/js-api-loader'
 import useOnclickOutside from 'react-cool-onclickoutside'
+
+import { useWeather } from '../hooks'
 
 export const PlacesAutocomplete = () => {
   const {
@@ -21,6 +22,8 @@ export const PlacesAutocomplete = () => {
     debounce: 300,
   })
 
+  const { getWeather, getWeatherFromCurrentLocation } = useWeather()
+
   const ref = useOnclickOutside(() => {
     clearSuggestions()
   })
@@ -30,14 +33,8 @@ export const PlacesAutocomplete = () => {
   }
 
   useEffect(() => {
-    getCurrentCoordinates()
-      .then((coordinates) => {
-        fetchWeather(coordinates.latitude, coordinates.longitude)
-      })
-      .catch(err => {
-        console.log(err)
-      })
-  }, [])
+    getWeatherFromCurrentLocation()
+  }, [getWeatherFromCurrentLocation])
 
   useEffect(() => {
     const loader = new Loader({
@@ -62,7 +59,7 @@ export const PlacesAutocomplete = () => {
         getGeocode({ address: description }).then((results) => {
           const { lat, lng } = getLatLng(results[0])
           console.log("📍 Coordinates: ", { lat, lng })
-          fetchWeather(lat, lng)
+          getWeather(lat, lng)
         })
       }
 

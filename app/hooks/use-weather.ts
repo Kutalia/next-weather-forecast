@@ -1,4 +1,4 @@
-import { useEffect, useContext, useCallback } from 'react'
+import { useContext, useCallback } from 'react'
 
 import { getCurrentCoordinates, fetchWeather } from '../utils'
 import { WeatherContext } from '../providers'

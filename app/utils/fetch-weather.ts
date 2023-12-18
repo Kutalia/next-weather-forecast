@@ -1,15 +1,6 @@
 import { fetchWeatherApi } from 'openmeteo'
 
-export interface Weather {
-  temperature: number,
-  weatherCode: number,
-  apparentTemperature: number,
-  humidity: number,
-  windSpeed: number,
-  windDirection: number,
-  elevation: number,
-  visibility: number,
-}
+import { Weather } from './models'
 
 const humanizeMeteoResponse = (response: any) => {
   // Helper function to form time ranges
@@ -36,6 +27,7 @@ const humanizeMeteoResponse = (response: any) => {
     humidity: current.variables(3)!.value(),
     windSpeed: current.variables(4)!.value(),
     windDirection: current.variables(5)!.value(),
+    isDay: current.variables(6)!.value(),
     elevation,
     visibility: NaN,
   }
@@ -60,7 +52,7 @@ export const fetchWeather = async (lat: number, lng: number) => {
   const params = {
     latitude: [lat],
     longitude: [lng],
-    current: 'temperature_2m,weather_code,apparent_temperature,relative_humidity_2m,wind_speed_10m,wind_direction_10m',
+    current: 'temperature_2m,weather_code,apparent_temperature,relative_humidity_2m,wind_speed_10m,wind_direction_10m,is_day',
     minutely_15: 'visibility',
   }
   const url = 'https://api.open-meteo.com/v1/forecast'

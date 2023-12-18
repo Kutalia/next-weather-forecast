@@ -2,7 +2,7 @@
 
 import { useState, createContext, Dispatch, SetStateAction, FC, PropsWithChildren } from 'react'
 
-import { Weather } from '../utils'
+import { Weather } from '../utils/models'
 
 export interface iWeatherContext {
   weather: Weather | null,

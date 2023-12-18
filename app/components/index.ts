@@ -1,1 +1,2 @@
-export * from './PlacesAutocomplete'
+export * from './autocomplete.component'
+export * from './weather.component'

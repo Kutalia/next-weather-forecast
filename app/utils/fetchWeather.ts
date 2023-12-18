@@ -1,5 +1,16 @@
 import { fetchWeatherApi } from 'openmeteo'
 
+export interface Weather {
+  temperature: number,
+  weatherCode: number,
+  apparentTemperature: number,
+  humidity: number,
+  windSpeed: number,
+  windDirection: number,
+  elevation: number,
+  visibility: number,
+}
+
 const humanizeMeteoResponse = (response: any) => {
   // Helper function to form time ranges
   const range = (start: number, stop: number, step: number) =>
@@ -18,7 +29,7 @@ const humanizeMeteoResponse = (response: any) => {
     visibility: minutely15.variables(0)!.valuesArray()!,
   }
 
-  const weatherData = {
+  const weatherData: Weather = {
     temperature: current.variables(0)!.value(),
     weatherCode: current.variables(1)!.value(),
     apparentTemperature: current.variables(2)!.value(),

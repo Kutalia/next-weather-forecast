@@ -8,6 +8,7 @@ export interface Weather {
   isDay: number,
   elevation: number,
   visibility: number,
+  locationInfo: string,
 }
 
 export enum WeatherTypes {

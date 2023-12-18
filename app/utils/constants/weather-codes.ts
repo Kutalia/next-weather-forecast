@@ -1,4 +1,4 @@
-import { WeatherTypes } from './models'
+import { WeatherTypes } from '../models'
 
 export const weatherCodes: {
   [key: string]: {
@@ -11,7 +11,7 @@ export const weatherCodes: {
   }
 } = {
   '0': {
-    description: 'clear sky',
+    description: 'Clear sky',
     type: WeatherTypes.CLEAR,
     icons: {
       day: '/clear_weather_day.svg',
@@ -19,7 +19,7 @@ export const weatherCodes: {
     },
   },
   '1': {
-    description: 'mainly clear',
+    description: 'Mainly clear',
     type: WeatherTypes.CLOUDY,
     icons: {
       day: '/mainly_clear_weather_day.svg',
@@ -27,7 +27,7 @@ export const weatherCodes: {
     },
   },
   '2': {
-    description: 'partly cloudy',
+    description: 'Partly cloudy',
     type: WeatherTypes.CLOUDY,
     icons: {
       day: '/cloudy.svg',
@@ -35,7 +35,7 @@ export const weatherCodes: {
     },
   },
   '3': {
-    description: 'overcast',
+    description: 'Overcast',
     type: WeatherTypes.CLOUDY,
     icons: {
       day: '/cloudy.svg',
@@ -43,7 +43,7 @@ export const weatherCodes: {
     },
   },
   '4': {
-    description: 'fog',
+    description: 'Fog',
     type: WeatherTypes.FOG,
     icons: {
       day: '/foggy_day.svg',
@@ -51,7 +51,7 @@ export const weatherCodes: {
     },
   },
   '48': {
-    description: 'depositing rime fog',
+    description: 'Depositing rime fog',
     type: WeatherTypes.FOG,
     icons: {
       day: '/rime.svg',
@@ -59,7 +59,7 @@ export const weatherCodes: {
     },
   },
   '51': {
-    description: 'light drizzle',
+    description: 'Light drizzle',
     type: WeatherTypes.DRIZZLE,
     icons: {
       day: '/light_drizzle_day.svg',
@@ -67,7 +67,7 @@ export const weatherCodes: {
     },
   },
   '53': {
-    description: 'moderate drizzle',
+    description: 'Moderate drizzle',
     type: WeatherTypes.DRIZZLE,
     icons: {
       day: '/moderate_drizzle_day.svg',
@@ -75,7 +75,7 @@ export const weatherCodes: {
     },
   },
   '55': {
-    description: 'dense drizzle',
+    description: 'Dense drizzle',
     type: WeatherTypes.DRIZZLE,
     icons: {
       day: '/dense_drizzle_day.svg',
@@ -83,7 +83,7 @@ export const weatherCodes: {
     },
   },
   '56': {
-    description: 'freezing drizzle',
+    description: 'Freezing drizzle',
     type: WeatherTypes.FREEZING_DRIZZLE,
     icons: {
       day: '/freezing_rain.svg',
@@ -91,7 +91,7 @@ export const weatherCodes: {
     },
   },
   '57': {
-    description: 'dense freezing drizzle',
+    description: 'Dense freezing drizzle',
     type: WeatherTypes.FREEZING_DRIZZLE,
     icons: {
       day: '/freezing_rain.svg',
@@ -99,7 +99,7 @@ export const weatherCodes: {
     },
   },
   '61': {
-    description: 'slight rain',
+    description: 'Slight rain',
     type: WeatherTypes.RAIN,
     icons: {
       day: '/slight_rain.svg',
@@ -107,7 +107,7 @@ export const weatherCodes: {
     },
   },
   '63': {
-    description: 'moderate rain',
+    description: 'Moderate rain',
     type: WeatherTypes.RAIN,
     icons: {
       day: '/moderate_rain.svg',
@@ -115,7 +115,7 @@ export const weatherCodes: {
     },
   },
   '65': {
-    description: 'heavy rain',
+    description: 'Heavy rain',
     type: WeatherTypes.RAIN,
     icons: {
       day: '/heavy_rain.svg',
@@ -123,7 +123,7 @@ export const weatherCodes: {
     },
   },
   '66': {
-    description: 'light freezing rain',
+    description: 'Light freezing rain',
     type: WeatherTypes.FREEZING_RAIN,
     icons: {
       day: '/freezing_rain.svg',
@@ -131,7 +131,7 @@ export const weatherCodes: {
     },
   },
   '67': {
-    description: 'heavy freezing rain',
+    description: 'Heavy freezing rain',
     type: WeatherTypes.FREEZING_RAIN,
     icons: {
       day: '/freezing_rain.svg',
@@ -139,7 +139,7 @@ export const weatherCodes: {
     },
   },
   '71': {
-    description: 'light snow fall',
+    description: 'Light snow fall',
     type: WeatherTypes.SNOW,
     icons: {
       day: '/light_snow_day.svg',
@@ -147,7 +147,7 @@ export const weatherCodes: {
     },
   },
   '73': {
-    description: 'moderate snow fall',
+    description: 'Moderate snow fall',
     type: WeatherTypes.SNOW,
     icons: {
       day: '/moderate_snow.svg',
@@ -155,7 +155,7 @@ export const weatherCodes: {
     },
   },
   '75': {
-    description: 'heavy snow fall',
+    description: 'Heavy snow fall',
     type: WeatherTypes.SNOW,
     icons: {
       day: '/heavy_snow.svg',
@@ -163,7 +163,7 @@ export const weatherCodes: {
     },
   },
   '77': {
-    description: 'snow grains',
+    description: 'Snow grains',
     type: WeatherTypes.SNOW_GRAINS,
     icons: {
       day: '/snow_grains.svg',
@@ -171,7 +171,7 @@ export const weatherCodes: {
     },
   },
   '80': {
-    description: 'slight rain shower',
+    description: 'Slight rain shower',
     type: WeatherTypes.RAIN_SHOWER,
     icons: {
       day: '/slight_rain_shower_day.svg',
@@ -179,7 +179,7 @@ export const weatherCodes: {
     },
   },
   '81': {
-    description: 'moderate rain shower',
+    description: 'Moderate rain shower',
     type: WeatherTypes.RAIN_SHOWER,
     icons: {
       day: '/slight_rain_shower_day.svg',
@@ -187,7 +187,7 @@ export const weatherCodes: {
     },
   },
   '82': {
-    description: 'violent rain shower',
+    description: 'Violent rain shower',
     type: WeatherTypes.RAIN_SHOWER,
     icons: {
       day: '/violent_rain_shower_day.svg',
@@ -195,7 +195,7 @@ export const weatherCodes: {
     },
   },
   '85': {
-    description: 'slight snow shower',
+    description: 'Slight snow shower',
     type: WeatherTypes.SNOW_SHOWER,
     icons: {
       day: '/slight_snow_shower_day.svg',
@@ -203,7 +203,7 @@ export const weatherCodes: {
     },
   },
   '86': {
-    description: 'heavy snow shower',
+    description: 'Heavy snow shower',
     type: WeatherTypes.SNOW_SHOWER,
     icons: {
       day: '/heavy_snow_shower_day.svg',
@@ -211,7 +211,7 @@ export const weatherCodes: {
     },
   },
   '95': {
-    description: 'slight or moderate thunderstorm',
+    description: 'Slight or moderate thunderstorm',
     type: WeatherTypes.THUNDERSTORM,
     icons: {
       day: '/thunderstorm_day.svg',
@@ -219,7 +219,7 @@ export const weatherCodes: {
     },
   },
   '96': {
-    description: 'thunderstorm with slight hail',
+    description: 'Thunderstorm with slight hail',
     type: WeatherTypes.THUNDERSTORM_HAIL,
     icons: {
       day: '/thunderstorm_hail.svg',
@@ -227,7 +227,7 @@ export const weatherCodes: {
     },
   },
   '99': {
-    description: 'thunderstorm with moderate hail',
+    description: 'Thunderstorm with moderate hail',
     type: WeatherTypes.THUNDERSTORM_HAIL,
     icons: {
       day: '/thunderstorm_hail.svg',

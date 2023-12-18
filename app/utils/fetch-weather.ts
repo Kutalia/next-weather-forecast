@@ -30,6 +30,7 @@ const humanizeMeteoResponse = (response: any) => {
     isDay: current.variables(6)!.value(),
     elevation,
     visibility: NaN,
+    locationInfo: '',
   }
 
   let visibilityTime: Date

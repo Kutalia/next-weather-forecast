@@ -7,6 +7,7 @@ import { Loader } from '@googlemaps/js-api-loader'
 import useOnclickOutside from 'react-cool-onclickoutside'
 
 import { useWeather } from '../hooks'
+import { getAddressString, getCurrentCoordinates } from '../utils'
 
 export const PlacesAutocomplete = () => {
   const {
@@ -21,7 +22,7 @@ export const PlacesAutocomplete = () => {
     debounce: 300,
   })
 
-  const { getWeather, getWeatherFromCurrentLocation } = useWeather()
+  const { loadWeather } = useWeather()
 
   const ref = useOnclickOutside(() => {
     clearSuggestions()
@@ -31,23 +32,42 @@ export const PlacesAutocomplete = () => {
     setValue(e.target.value)
   }
 
+  // iife for beautiful async/await
+  // load evil global gMaps library once and fetch (unrelated) weather for current position here to avoid gMaps dependency
   useEffect(() => {
-    getWeatherFromCurrentLocation()
-  }, [getWeatherFromCurrentLocation])
+    (
+      async () => {
+        try {
+          const loader = new Loader({
+            apiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY as string,
+            version: "weekly",
+            libraries: ["places"],
+          })
 
-  useEffect(() => {
-    const loader = new Loader({
-      apiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY as string,
-      version: "weekly",
-      libraries: ["places"],
-    })
+          await loader.importLibrary('places')
+          init()
 
-    loader.importLibrary('places').then(() => {
-      init()
-    }).catch(err => {
-      console.error(err)
-    })
-  }, [init])
+          const coordinates = await getCurrentCoordinates()
+
+          // waiting blocks execution but initializing weather with locationInfo avoids possible rerenders
+          const locationResults = await getGeocode(
+            {
+              location: {
+                lat: coordinates.latitude,
+                lng: coordinates.longitude,
+              }
+            }
+          )
+
+          const locationInfo = getAddressString(locationResults[0].address_components)
+
+          loadWeather(coordinates.latitude, coordinates.longitude, locationInfo)
+        }
+        catch (err) {
+          console.error(err)
+        }
+      })()
+  }, [loadWeather, init])
 
   const handleSelect =
     ({ description }: { description: string }) =>
@@ -57,8 +77,7 @@ export const PlacesAutocomplete = () => {
 
         getGeocode({ address: description }).then((results) => {
           const { lat, lng } = getLatLng(results[0])
-          console.log("📍 Coordinates: ", { lat, lng })
-          getWeather(lat, lng)
+          loadWeather(lat, lng)
         })
       }
 

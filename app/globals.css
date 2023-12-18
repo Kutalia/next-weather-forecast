@@ -17,6 +17,8 @@ main {
   background: linear-gradient(to bottom,
       transparent,
       rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+  transition: background-color 1s;
+  transition: color 1s;
 }
 
 main.night {

@@ -7,10 +7,10 @@ import { useWeather } from './hooks'
 export default function Home() {
   const { weather } = useWeather()
 
-  const isNight = weather ? !weather.isDay : true
+  const isNight = weather ? !weather.isDay : false
 
   return (
-    <main className={`flex min-h-screen flex-col items-center justify-between p-24${isNight ? ' night' : ''}`}>
+    <main className={`flex min-h-screen flex-col items-center p-24${isNight ? ' night' : ''}`}>
       <PlacesAutocomplete />
       <Weather />
     </main>

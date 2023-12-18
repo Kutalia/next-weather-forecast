@@ -14,6 +14,7 @@ export const Weather = () => {
         temperature={weather.temperature}
         weatherCode={weather.weatherCode}
         isDay={weather.isDay}
+        locationInfo={weather.locationInfo}
       />
     </div>
   )

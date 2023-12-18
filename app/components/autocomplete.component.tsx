@@ -33,11 +33,11 @@ export const PlacesAutocomplete = () => {
   }
 
   // iife for beautiful async/await
-  // load evil global gMaps library once and fetch (unrelated) weather for current position here to avoid gMaps dependency
   useEffect(() => {
     (
       async () => {
         try {
+          // load evil global gMaps library once
           const loader = new Loader({
             apiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY as string,
             version: "weekly",
@@ -47,6 +47,7 @@ export const PlacesAutocomplete = () => {
           await loader.importLibrary('places')
           init()
 
+          // fetch weather for current position here to avoid further gMaps dependencies in other components
           const coordinates = await getCurrentCoordinates()
 
           // waiting blocks execution but initializing weather with locationInfo avoids possible rerenders

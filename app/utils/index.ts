@@ -1,2 +1,2 @@
-export * from './fetchWeather'
-export * from './getCurrentCoordinates'
+export * from './fetch-weather'
+export * from './get-current-coordinates'

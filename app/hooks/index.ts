@@ -1,1 +1,1 @@
-export * from './useWeather'
+export * from './use-weather'

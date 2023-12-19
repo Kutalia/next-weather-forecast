@@ -4,21 +4,20 @@ import { fetchWeather } from '../utils'
 import { WeatherContext } from '../providers'
 
 export const useWeather = () => {
-  const { weather, setWeather } = useContext(WeatherContext)
-  const [loading, setLoading] = useState(false)
+  const { weather, setWeather, loading, setLoading } = useContext(WeatherContext)
 
   const loadWeather = useCallback(async (latitude: number, longitude: number, locationInfo?: string) => {
-    setLoading(true)
     try {
+      setLoading(true)
       const newWeather = await fetchWeather(latitude, longitude)
       setWeather(locationInfo ? { ...newWeather, locationInfo } : newWeather)
-      setLoading(true)
       return newWeather
     } catch (err) {
       console.error(err)
+    } finally {
       setLoading(false)
     }
-  }, [setWeather])
+  }, [setWeather, setLoading])
 
   return { weather, loadWeather, loading }
 }

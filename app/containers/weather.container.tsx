@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import { WeatherIndicator } from '../components'
+import { WeatherIndicator, WeatherDetail } from '../components'
 import { useWeather } from '../hooks'
 import { getDirectionName } from '../utils'
 
@@ -26,85 +26,50 @@ export const Weather = () => {
           Feels Like {Math.floor(weather.apparentTemperature)}&#176;C
         </p>
 
-        <div className="flex gap-4">
-          <Image
-            src="/humidity.svg"
-            width={80}
-            height={80}
-            title="humidity at 2 meters from the ground"
-            alt="humidity"
-            priority
-          />
-          <div className="flex flex-col justify-center">
-            <p className="font-bold text-lg">
-              {Math.round(weather.humidity)}%
-            </p>
-            <p className="font-extralight text-sm">Humidity</p>
-          </div>
-        </div>
+        <WeatherDetail
+          iconUrl="/humidity.svg"
+          iconTitle="humidity at 2 meters from the ground"
+          iconAlt="humidity"
+          text={`${Math.round(weather.humidity)}%`}
+          description="Humidity"
+        />
 
-        <div className="flex gap-4">
-          <Image
-            src="/wind.svg"
-            width={80}
-            height={80}
-            title="wind"
-            alt="wind"
-            priority
-          />
-          <div className="flex flex-col justify-center">
-            <p className="font-bold text-lg">
-              {Math.round(weather.windSpeed)} Km/h
-            </p>
-            <p className="font-extralight text-sm">Wind Speed</p>
-            <div className="flex">
-              <Image
-                src="/arrow_direction.svg"
-                style={{ transform: `rotate(${Math.floor(weather.windDirection) - 90}deg)` }}
-                width={20}
-                height={20}
-                title="wind direction at 10 meters from the ground"
-                alt="wind direction"
-                priority
-              />
-              <span>{getDirectionName(weather.windDirection)}</span>
-            </div>
+        <WeatherDetail
+          iconUrl="/wind.svg"
+          iconTitle="wind"
+          iconAlt="wind"
+          text={`${Math.round(weather.windSpeed)} Km/h`}
+          description="Wind Speed"
+        >
+          <div className="flex">
+            <Image
+              src="/arrow_direction.svg"
+              style={{ transform: `rotate(${Math.floor(weather.windDirection) - 90}deg)` }}
+              width={20}
+              height={20}
+              title="wind direction at 10 meters from the ground"
+              alt="wind direction"
+              priority
+            />
+            <span>{getDirectionName(weather.windDirection)}</span>
           </div>
-        </div>
+        </WeatherDetail>
 
-        <div className="flex gap-4">
-          <Image
-            src="/elevation.svg"
-            width={80}
-            height={80}
-            title="elevation from the sea level"
-            alt="elevation"
-            priority
-          />
-          <div className="flex flex-col justify-center">
-            <p className="font-bold text-lg">
-              {Math.round(weather.elevation)} meters
-            </p>
-            <p className="font-extralight text-sm">Elevation</p>
-          </div>
-        </div>
+        <WeatherDetail
+          iconUrl="/elevation.svg"
+          iconTitle="elevation from the sea level"
+          iconAlt="elevation"
+          text={`${Math.round(weather.elevation)} meters`}
+          description="Elevation"
+        />
 
-        <div className="flex gap-4">
-          <Image
-            src="/visibility.svg"
-            width={80}
-            height={80}
-            title="visibility"
-            alt="visibility"
-            priority
-          />
-          <div className="flex flex-col justify-center">
-            <p className="font-bold text-lg">
-              {Math.round(weather.visibility)} meters
-            </p>
-            <p className="font-extralight text-sm">Visibility</p>
-          </div>
-        </div>
+        <WeatherDetail
+          iconUrl="/visibility.svg"
+          iconTitle="visibility"
+          iconAlt="visibility"
+          text={`${Math.round(weather.visibility)} meters`}
+          description="Visibility"
+        />
       </div>
     </div>
   )

@@ -90,22 +90,26 @@ export const PlacesAutocomplete = () => {
       } = suggestion
 
       return (
-        <li key={place_id} onClick={handleSelect(suggestion)}>
+        <li
+          key={place_id}
+          onClick={handleSelect(suggestion)}
+          className="bg-white/80 backdrop-blur-sm text-black px-2 py-1 border-black border-t-[1px] border-x-[1px] first:rounded-t-lg last:rounded-b-lg"
+        >
           <strong>{main_text}</strong> <small>{secondary_text}</small>
         </li>
       )
     })
 
   return (
-    <div ref={ref}>
+    <div ref={ref} className="relative w-96">
       <input
-        className="text-black"
+        className="text-black bg-white/90 backdrop-blur-sm rounded-lg px-2 py-1 outline-none w-full"
         value={value}
         onChange={handleInput}
         disabled={!ready}
         placeholder="Where are you going?"
       />
-      {status === "OK" && <ul>{renderSuggestions()}</ul>}
+      {status === "OK" && <ul className="absolute z-10 border-black border-b-[1px]">{renderSuggestions()}</ul>}
     </div>
   )
 }

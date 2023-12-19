@@ -12,7 +12,11 @@ export default function Home() {
   return (
     <main className={`flex min-h-screen flex-col items-center p-24${isNight ? ' night' : ''}`}>
       <PlacesAutocomplete />
-      <Weather />
+      {
+        weather
+          ? <Weather />
+          : <div className="spinner" />
+      }
     </main>
   )
 }

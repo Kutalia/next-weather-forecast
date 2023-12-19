@@ -67,7 +67,7 @@ export const Weather = () => {
           iconUrl="/visibility.svg"
           iconTitle="visibility"
           iconAlt="visibility"
-          text={`${Math.round(weather.visibility)} meters`}
+          text={`${(weather.visibility / 1000).toFixed(1)} Kilometers`}
           description="Visibility"
         />
       </div>

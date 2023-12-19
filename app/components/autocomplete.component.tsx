@@ -77,8 +77,9 @@ export const PlacesAutocomplete = () => {
         clearSuggestions()
 
         getGeocode({ address: description }).then((results) => {
+          const locationInfo = getAddressString(results[0].address_components)
           const { lat, lng } = getLatLng(results[0])
-          loadWeather(lat, lng)
+          loadWeather(lat, lng, locationInfo)
         })
       }
 

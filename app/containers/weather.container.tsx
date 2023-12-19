@@ -12,7 +12,7 @@ export const Weather = () => {
   }
 
   return (
-    <div className="flex gap-12 mt-16">
+    <div className="flex flex-col sm:flex-row gap-12 mt-16">
       <div>
         <WeatherIndicator
           temperature={weather.temperature}

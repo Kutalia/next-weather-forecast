@@ -102,7 +102,7 @@ export const PlacesAutocomplete = () => {
     })
 
   return (
-    <div ref={ref} className="relative w-96">
+    <div ref={ref} className="relative w-80 sm:w-96">
       <input
         className="text-black bg-white/90 backdrop-blur-sm rounded-lg px-2 py-1 outline-none w-full"
         value={value}

@@ -2,28 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start: 214, 219, 220;
-  --background-end: 255, 255, 255;
-
-  --foreground-rgb-night: 255, 255, 255;
-  --background-start-rgb-night: 0, 0, 0;
-  --background-end-rgb-night: 0, 0, 0;
-}
-
 main {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
-  transition: background-color 1s;
-  transition: color 1s;
+  color: rgb(255, 255, 255);
+  background: rgb(0,90,128);
+  background: radial-gradient(circle, rgba(0,90,128,1) 0%, rgba(39,108,191,1) 65%, rgba(147,172,204,1) 100%);
 }
 
 main.night {
-  color: rgb(var(--foreground-rgb-night));
-  background: linear-gradient(to bottom,
-      transparent,
-      rgb(var(--background-end-rgb-night))) rgb(var(--background-start-rgb-night));
+  background: rgb(1,28,40);
+  background: radial-gradient(circle, rgba(1,28,40,1) 0%, rgba(8,40,80,1) 65%, rgba(68,84,102,1) 100%);
 }

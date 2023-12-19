@@ -61,8 +61,8 @@ export const Weather = () => {
               <Image
                 src="/arrow_direction.svg"
                 style={{ transform: `rotate(${Math.floor(weather.windDirection) - 90}deg)` }}
-                width={30}
-                height={30}
+                width={20}
+                height={20}
                 title="wind direction at 10 meters from the ground"
                 alt="wind direction"
                 priority

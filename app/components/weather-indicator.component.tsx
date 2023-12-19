@@ -17,7 +17,7 @@ export const WeatherIndicator: FC<iProps> = ({ temperature, weatherCode, isDay, 
     <div className="text-center">
       <h3 className="text-6xl">{Math.floor(temperature)}&#176;C</h3>
       <p className="mt-2">{description}</p>
-      <p className="mt-2">{locationInfo}</p>
+      <p className="mt-2 mb-4">{locationInfo}</p>
       <Image
         src={icons[isDay ? 'day' : 'night']}
         className="m-auto"

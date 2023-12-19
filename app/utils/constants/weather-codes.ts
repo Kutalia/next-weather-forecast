@@ -190,8 +190,8 @@ export const weatherCodes: {
     description: 'Violent rain shower',
     type: WeatherTypes.RAIN_SHOWER,
     icons: {
-      day: '/violent_rain_shower_day.svg',
-      night: '/violent_rain_shower_night.svg',
+      day: '/violent_rain_shower.svg',
+      night: '/violent_rain_shower.svg',
     },
   },
   '85': {
